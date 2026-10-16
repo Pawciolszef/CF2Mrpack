@@ -1,70 +1,57 @@
-# CF2Mrpack — CurseForge Instance to Modrinth (`.mrpack`) Converter
+# CF2Mrpack
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)
-![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
-![License](https://img.shields.io/badge/License-MIT-green)
+A simple GUI tool to convert local CurseForge Minecraft instances into Modrinth (`.mrpack`) packages.
 
-**CF2Mrpack** is a desktop utility built with Python and **CustomTkinter** that converts local **CurseForge** Minecraft instances directly into standalone **Modrinth (`.mrpack`)** modpack archives.
+## How it works
 
----
-
-## ✨ Features
-
-- **Automatic Environment Detection:** Reads `manifest.json` and `minecraftinstance.json` to automatically detect the Minecraft version and Modloader (`Forge`, `Fabric`, `NeoForge`, `Quilt`) along with its exact version.
-- **Smart Modrinth API Resolution:** Hashes all `.jar` files (`SHA-1` & `SHA-512`) and queries Modrinth's `/v2/version_files` endpoint in a single batch request:
-  - Mods available on Modrinth are linked via lightweight CDN URLs inside `modrinth.index.json`.
-  - CurseForge-exclusive or disabled mods automatically fall back to `overrides/mods/`, ensuring **zero missing mods**.
-- **Complete Configuration Migration:** Bundles `config/`, `defaultconfigs/`, `configureddefaults/`, `kubejs/`, `scripts/`, `patchouli_books/`, and optionally `resourcepacks/`, `shaderpacks/`, `datapacks/`, `saves/`, and `options.txt`.
-- **Responsive Dark UI:** Built with CustomTkinter with high-DPI scaling support.
+1. **Environment detection:** Reads Minecraft version and modloader (`Forge`, `Fabric`, `NeoForge`, `Quilt`) directly from instance files (`manifest.json` or `minecraftinstance.json`).
+2. **Modrinth API matching:** Calculates SHA-1 and SHA-512 hashes for all `.jar` files and checks them against the Modrinth API. Matched mods are linked via Modrinth CDN to keep the archive lightweight.
+3. **Fallback handling:** Any CurseForge-exclusive, disabled, or custom mods are bundled directly into `overrides/mods/`, ensuring nothing goes missing.
+4. **Config & assets migration:** Copies `config/`, `defaultconfigs/`, `kubejs/`, `scripts/`, and optionally resource packs, shaders, and saves.
 
 ---
 
-## 🚀 Installation & Usage
+## Download
 
-### 📥 Download Pre-built Executable
-You can download the ready-to-run Windows executable (`CF2Mrpack.exe`) directly from **[GitHub Releases](https://github.com/Pawciolszef/CF2Mrpack/releases)**. No Python installation needed!
-
-### 🐍 Running from Source
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Pawciolszef/CF2Mrpack.git
-   cd CF2Mrpack
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Launch the application:**
-   ```bash
-   python main.py
-   ```
+Download the latest standalone executable (`CF2Mrpack.exe`) from **[Releases](https://github.com/Pawciolszef/CF2Mrpack/releases)**. No Python installation required.
 
 ---
 
-## 📦 Building a Standalone `.exe` (PyInstaller)
+## Running from Source
 
-You can compile **CF2Mrpack** into a single standalone `.exe` file that runs on any Windows PC without Python installed.
+Requires Python 3.9+:
 
-### Local Build (PyInstaller)
+```bash
+git clone https://github.com/Pawciolszef/CF2Mrpack.git
+cd CF2Mrpack
+pip install -r requirements.txt
+python main.py
+```
+
+---
+
+## How to Use
+
+1. Select your CurseForge instance directory (e.g. `C:\curseforge\minecraft\Instances\<modpack>`).
+2. Verify or adjust the modpack name and version.
+3. Choose whether to include shaderpacks, resourcepacks, or world saves.
+4. Click **Build .mrpack Archive**.
+5. Import the generated `.mrpack` into Modrinth App, Prism Launcher, or another compatible launcher.
+
+---
+
+## Building Executable
+
+To build the Windows `.exe` locally:
+
 ```bash
 python -m PyInstaller --noconfirm --onefile --windowed --collect-all customtkinter --name "CF2Mrpack" --clean main.py
 ```
-The compiled executable will appear in `dist/CF2Mrpack.exe`.
+
+The output binary will be created in `dist/CF2Mrpack.exe`.
 
 ---
 
-## 📥 Importing into Modrinth App
+## License
 
-1. Open **CF2Mrpack**, select your CurseForge instance folder (e.g. `C:/curseforge/minecraft/Instances/YourModpack`), and click **Build .mrpack Archive**.
-2. Open the **Modrinth App**.
-3. Click the **+** (**Create new profile**) button on the left sidebar.
-4. Select **Import from file** and choose your generated `.mrpack` file.
-
----
-
-## 📄 License
-
-Distributed under the **MIT License**. See `LICENSE` for more information.
+[MIT](LICENSE)
