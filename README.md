@@ -19,13 +19,16 @@
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Installation & Usage
 
-### Running from Source
+### 📥 Download Pre-built Executable
+You can download the ready-to-run Windows executable (`CF2Mrpack.exe`) directly from **[GitHub Releases](https://github.com/Pawciolszef/CF2Mrpack/releases)**. No Python installation needed!
+
+### 🐍 Running from Source
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/CF2Mrpack.git
+   git clone https://github.com/Pawciolszef/CF2Mrpack.git
    cd CF2Mrpack
    ```
 
