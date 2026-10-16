@@ -48,15 +48,9 @@ You can download the ready-to-run Windows executable (`CF2Mrpack.exe`) directly 
 
 You can compile **CF2Mrpack** into a single standalone `.exe` file that runs on any Windows PC without Python installed.
 
-### Option A: One-Click Batch Script (Windows)
-Double-click `build_exe.bat` or run it from the terminal:
-```cmd
-build_exe.bat
-```
-
-### Option B: Manual PyInstaller Command
+### Local Build (PyInstaller)
 ```bash
-pyinstaller --noconfirm --onefile --windowed --collect-all customtkinter --name "CF2Mrpack" main.py
+python -m PyInstaller --noconfirm --onefile --windowed --collect-all customtkinter --name "CF2Mrpack" --clean main.py
 ```
 The compiled executable will appear in `dist/CF2Mrpack.exe`.
 
