@@ -14,6 +14,8 @@ A simple GUI tool to convert local CurseForge Minecraft instances into Modrinth 
 ## Download
 
 Download the latest standalone executable (`CF2Mrpack.exe`) from **[Releases](https://github.com/Pawciolszef/CF2Mrpack/releases)**. No Python installation required.
+**WARNING**: Windows SmartScreen may display a warning since converter is without an expensive commercial code-signing certificate.
+You can download, check code and build it yourself.
 
 ---
 
